@@ -1,0 +1,232 @@
+*{
+	margin: 0;
+	box-sizing: border-box;
+}
+.open_animation{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: orange;
+	font-size: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border: none;
+	padding: 5px;
+	border: 1px solid dodgerblue;
+}
+.open_animation:after, .open_animation:before{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	border: 1px solid dodgerblue;
+	content: "";
+	animation: 1s infinite;
+	border-radius: 50%;
+	animation: btn_open 1s infinite alternate;
+}
+.open_animation:before{
+	animation: btn_open2 1s infinite alternate;
+}
+.close_animation{
+	background-color: blue;
+}
+.close_animation:after{
+	animation-play-state: paused;
+}
+@keyframes btn_open{
+	from{
+		transform: scale(1);
+	}
+	to{
+		transform: scale(1.5);
+	}
+}
+@keyframes btn_open2{
+	from{
+		transform: scale(1);
+	}
+	to{
+		transform: scale(2);
+	}
+}
+
+
+
+
+.block_animation{
+	margin: 0 auto;
+	position: relative;
+	height: 0;
+	width: 100%;
+	visibility: hidden;
+	transition: height 1s;
+	transition-delay: 0.3s;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	background-image: url(img/kukhlii_vestiar.png);
+	background-size: 50%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.play_animation{
+	height: 303px;
+	visibility: visible;
+}
+.line{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	animation: line 8s infinite alternate;
+	animation-fill-mode: forwards;
+	animation-timing-function: cubic-bezier(.38,.41,.85,.83);
+}
+.circle{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: #097900;
+	position: absolute;
+	bottom: 0;
+	animation: circle 1s infinite alternate;
+	animation-fill-mode: forwards;
+	cursor: pointer;
+}
+.circle2{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	position: relative;
+	opacity: 0;
+	cursor: pointer;
+}
+@keyframes line{
+	from{
+		transform: translateY(0) ;
+	}
+	to{
+		transform: translateX(97%)
+	}
+}
+@keyframes circle{
+	from{
+		transform: translateX(5px) ;
+	}
+	to{
+		transform: translateY(-260px)
+	}
+}
+.circle:active , .line:active{
+	animation-play-state: paused;
+	transition: 0.5s;
+}
+.circle2:active{
+	background-color: red;
+	opacity: 1;
+}
+
+.eye--left, .eye--right{
+	height: 0;
+	width: 10px;
+	border-radius: 50%;
+	background-color: #fff;
+	position: absolute;
+	top: 12px;
+	transition: 1s;
+	z-index: 1;
+}
+.eye--left{
+	left: 12px;
+}
+.eye--right{
+	right: 12px;
+}
+.circle2:active .eye--left, .circle2:active .eye--right{
+	height: 15px;
+}
+.circle2:active .right-hand{
+	animation: hand-right 1s infinite;
+	animation-delay: 1s;
+}
+.circle2:active .left-hand{
+	animation: hand-left 0.7s infinite; 
+	animation-delay: 1s;
+}
+.eye--right:after,.eye--left:after{
+	width: 5px;
+	height: 5px;
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #000;
+	border-radius: 50%;
+	content: "";
+}
+.right-hand, .left-hand{
+	width: 40px;
+	height: 20px;
+	position: absolute;
+	border-bottom: 2px solid #000;
+	border-radius: 50%;
+	z-index: 0;
+}
+.left-hand{
+	top: 15px;
+	right: 80%;
+	transform: rotate(45deg);
+}
+.right-hand{
+	top: 15px;
+	left: 80%;
+	transform: rotate(-45deg);
+}
+.left-hand:after, .right-hand:after,.left-hand:before,.right-hand:before{
+	width: 10px;
+	height: 1px;
+	position: absolute;
+	content: "";
+	background-color: #000;
+}
+.left-hand:before{
+	left: 1px;
+	bottom: 6px;
+	transform: rotate(70deg);
+}
+.left-hand:after{
+	left: 0;
+	bottom: -1px;
+	transform: rotate(-15deg);
+}
+.right-hand:before{
+	right: -1px;
+	bottom: -2px;
+	transform: rotate(15deg);
+}
+.right-hand:after{
+	right: 4px;
+	bottom: 7px;
+	transform: rotate(100deg);	
+}
+@keyframes hand-right{
+	from{
+		transform: rotate(-45deg);
+		transform-origin: 0;
+	}
+	to{
+		transform: rotate(-360deg);
+		transform-origin: 0;
+	}
+}
+@keyframes hand-left{
+	from{
+		transform: rotate(45deg);
+		transform-origin: 100%;
+	}
+	to{
+		transform: rotate(360deg);
+		transform-origin: 100%;
+	}
+}
